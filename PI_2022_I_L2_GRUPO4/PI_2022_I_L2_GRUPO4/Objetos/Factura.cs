@@ -11,13 +11,14 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
         private decimal isv;
         private decimal descuento;
         private int cantidadgame;
-        //private decimal totalpagar;
-        public Factura(string pNombreGame, string pCodigoGame, string pDescripcionGame,
-            decimal pPricegame, decimal pISV, decimal pDescuento, int pCantidadGame)
-            : base(pNombreGame, pCodigoGame, pDescripcionGame, pPricegame)
+
+        public Factura(string pNombre, string pApellido, string pId, string pEmail,
+            string pNumeroTelefono, string pDescripcionGame, decimal pPriceGame, string pNombreGame,
+            string pCodigoGame, decimal pISV, decimal pDescuento, int pCantidadGame) 
+            : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono, pDescripcionGame, pCodigoGame, pNombreGame, pPriceGame)
         {
-            ISV          = pISV;
-            Descuento    = pDescuento;
+            ISV = pISV;
+            Descuento = pDescuento;
             CantidadGame = pCantidadGame;
         }
 
@@ -62,21 +63,6 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
             }
         }
 
-        /*public decimal TotalPagar
-        {
-            get { return totalpagar; }
-            set 
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value),
-                        value, $"{nameof(TotalPagar)} deberia ser >=0 ");
-                }
-                totalpagar = value; 
-            }
-        }
-        */
-
         public override decimal CalcularSubtotal() => CantidadGame * pricegame;
         public virtual decimal CalcularDescuento() => Descuento * CalcularSubtotal();
         public virtual decimal CalcularISV() => CalcularSubtotal() * ISV;
@@ -87,7 +73,7 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
            $"La Cantidad de juegos es:\n {CantidadGame}\n" +
            $"El Descuento es:\n {Descuento:c}\n" +
            $"El ISV es:\n {ISV:c}\n";
-          // $"El Sub total es:\n {CalcularSubtotal():c}\n";
+          
            
 
 

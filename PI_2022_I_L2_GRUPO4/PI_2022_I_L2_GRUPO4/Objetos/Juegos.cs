@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI_2022_I_L2_GRUPO4.Objetos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,25 +7,24 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO3.Objetos
 {
-    internal class Juegos
+    internal class Juegos:ClaseAbstracta
     {
-        public Juegos(string pNombreGame, string pCodigoGame, string pDescripcionGame,
-           decimal pPricegame) ///*, decimal pSubTotal*/)
-        {
-            NombreGame      = pNombreGame;
-            CodigoGame      = pCodigoGame;
-            DescripcionGame = pDescripcionGame;
-            PriceGame       = pPricegame;
-           // CantidadGame    = pCantidadGame;
-         //   SubTotal        = pSubTotal;
-        }
-                  
-        public string NombreGame { get;}
-        public string CodigoGame { get;}
+
+        public string NombreGame { get; }
         public string DescripcionGame { get;}
+        public string CodigoGame { get; }
         protected decimal pricegame;
-       // ;
-        //private decimal subtotal;
+
+
+        public Juegos(string pNombre, string pApellido, string pId, string pEmail, string pNumeroTelefono
+            , string pNombreGame, string pDescripcionGame, string pCodigoGame, decimal pPriceGame)
+            : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
+        {
+            DescripcionGame = pDescripcionGame;
+            PriceGame = pPriceGame;
+            NombreGame = pNombreGame;
+            CodigoGame = pCodigoGame;
+        }
 
         public decimal PriceGame
         {
@@ -39,32 +39,23 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
                 pricegame = value; 
             }
         }
-       /**/
-       /* public decimal SubTotal
-        {
-            get { return subtotal; }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value),
-                        value, $"{nameof(SubTotal)} deberia ser >=0 ");
-                }
-                subtotal = value;
-            }
-        }*/
+
 
         public virtual decimal CalcularSubtotal() => PriceGame ;
-        //public virtual decimal CalcularTotal() => PriceGame;
-        //public virtual decimal CalcularDescuento() => PriceGame;
+
 
 
         public override string ToString() =>
-          $"El Nombre del juego es:\n {NombreGame}\n" +
-           $"El Codigo del Juegos es:\n {CodigoGame}\n" +
-           $"La Descripcion del juegos es:\n {DescripcionGame}\n" +
-           $"El Precio del juego es:\n {PriceGame:c}";
-          
+            $"Nombre del Autor: {Nombre} {Apellido}\n" +
+            $"Numero de Identificacion: {Id}\n" +
+            $"Email de la empresa: {Email}\n" +
+            $"Numero Tefonico de la empresa: {NumeroTelefono}\n"+
+            $"El Nombre del juego es:\n {NombreGame}\n" +
+            $"El Codigo del Juegos es:\n {CodigoGame}\n" +
+            $"La Descripcion del juegos es:\n {DescripcionGame}\n" +
+            $"El Precio del juego es:\n {PriceGame:c}";
 
+
+    
     }
 }

@@ -8,6 +8,11 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
 {
     internal abstract class ClaseAbstracta
     {
+        private string pNombre;
+        private string pId;
+        private string pEmail;
+        private string pNumeroTelefono;
+
         public string Nombre { get; }
         public string Apellido { get; }
         public string Id { get; }
@@ -23,10 +28,18 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
             Email = pEmail;
             NumeroTelefono = pNumeroTelefono;
         }
-        public  override string ToString() =>
-            
+
+        protected ClaseAbstracta(string pNombre, string pId, string pEmail, string pNumeroTelefono)
+        {
+            this.pNombre         = pNombre;
+            this.pId             = pId;
+            this.pEmail          = pEmail;
+            this.pNumeroTelefono = pNumeroTelefono;
+        }
+
+        public override string ToString() =>
             $"Nombre: {Nombre} {Apellido}\n" +
-            $"Numero de Identidad: {Id}\n" +
+            $"Numero de Identificacion: {Id}\n" +
             $"Email: {Email}\n" +
             $"Numero Tefonico: {NumeroTelefono}\n";
     }

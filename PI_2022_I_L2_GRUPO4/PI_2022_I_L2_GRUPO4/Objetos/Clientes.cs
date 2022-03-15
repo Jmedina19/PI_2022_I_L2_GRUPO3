@@ -9,10 +9,10 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
 {
     internal class Clientes : ClaseAbstracta 
     {
-       
+        
         public Clientes(string pNombre, string pApellido, string pId, string pEmail,
             string pNumeroTelefono) 
-            : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
+            : base(pNombre,pApellido, pId, pEmail, pNumeroTelefono)
         {
             
         }
