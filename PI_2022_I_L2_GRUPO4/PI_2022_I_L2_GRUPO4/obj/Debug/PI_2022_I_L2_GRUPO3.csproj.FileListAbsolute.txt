@@ -1,0 +1,8 @@
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\PI_2022_I_L2_GRUPO4.exe.config
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\PI_2022_I_L2_GRUPO4.exe
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\PI_2022_I_L2_GRUPO4.pdb
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\obj\Debug\PI_2022_I_L2_GRUPO3.csproj.AssemblyReference.cache
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\obj\Debug\PI_2022_I_L2_GRUPO3.csproj.SuggestedBindingRedirects.cache
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\obj\Debug\PI_2022_I_L2_GRUPO3.csproj.CoreCompileInputs.cache
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\obj\Debug\PI_2022_I_L2_GRUPO4.exe
+C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\obj\Debug\PI_2022_I_L2_GRUPO4.pdb
