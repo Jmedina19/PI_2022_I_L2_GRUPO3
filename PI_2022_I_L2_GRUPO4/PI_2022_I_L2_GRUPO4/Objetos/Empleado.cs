@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO3.Objetos
 {
-    internal class Empleado:ClaseAbstracta
+    internal class Empleado:Ca_Datos_Generales
     {
 
         public Empleado(string pNombre, string pApellido, string pId, string pEmail,

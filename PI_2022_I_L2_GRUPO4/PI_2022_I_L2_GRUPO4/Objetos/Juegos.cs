@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO3.Objetos
 {
-    internal class Juegos:ClaseAbstracta
+    internal class Juegos:Ca_Datos_Generales
     {
 
         public string NombreGame { get; set; }

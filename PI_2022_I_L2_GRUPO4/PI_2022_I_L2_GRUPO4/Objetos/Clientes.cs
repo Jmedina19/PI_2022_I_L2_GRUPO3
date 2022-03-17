@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO3.Objetos
 {
-    internal class Clientes : ClaseAbstracta 
+    internal class Clientes : Ca_Datos_Generales 
     {
         
         public Clientes(string pNombre, string pApellido, string pId, string pEmail,

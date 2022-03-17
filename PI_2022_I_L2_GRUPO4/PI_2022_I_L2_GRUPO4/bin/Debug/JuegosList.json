@@ -1,15 +1,37 @@
 {
-"Juegoslist":[
-{
-"Nombre":"Steve",
-"Apellido":"Fudoka",
-"Id":"1357-9024-68014",
-"Email":"activision@gmail.com",
-"NumeroTelefono":"2235-4956",
-"NombreGame":"Call of Duty",
-"DescripcionGame":"Este Juego es uno de los mejores juegos multijugador en primera persona shooter",
-"CodigoGame":"1",
-"PriceGame":"145.14M"
-}
-]
+  "Juegoslist": [
+   {
+      "Nombre":"Steve",
+      "Apellido":"Fudoka",
+      "Id":"0801-2003-07945",
+      "Email":"activision@gmail.com",
+      "NumeroTelefono":"2235-4956",
+      "NombreGame":"Call of Duty",
+      "DescripcionGame":"Este Juego es uno de los mejores juegos multijugador en primera persona shooter",
+      "CodigoGame":"1",
+      "PriceGame":145.14
+       },
+       {
+         "Nombre":"Isse",
+         "Apellido":"Gremory",
+         "Id":"0801-2003-07946",
+         "Email":"supercell@gmail.com",
+         "NumeroTelefono":"2209-1922",
+         "NombreGame":"Brawl Stars",
+         "DescripcionGame":"Este juego es para jugar en familia y relajarse despues de un arduo dia",
+         "CodigoGame":"2",
+         "PriceGame":35.99
+        },
+        {
+         "Nombre":"Midoriya",
+         "Apellido":"Izuku",
+         "Id":"0801-2003-07947",
+         "Email":"splashgames@gamil.com",
+         "NumeroTelefono":"2220-4106",
+         "NombreGame":"Fall Guys",
+         "DescripcionGame":"Este Juego en linea esta echo para juntar a las familias y pasar un buen rato con muchas carcajadas de por medio",
+         "CodigoGame":"3",
+         "PriceGame":45.99
+        }
+       ]
 }

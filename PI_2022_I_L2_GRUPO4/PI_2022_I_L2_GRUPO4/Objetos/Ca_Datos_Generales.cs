@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO4.Objetos
 {
-    internal abstract class ClaseAbstracta
+    internal abstract class Ca_Datos_Generales
     {
        // public string pNombre;
        // public string pId;
@@ -19,7 +19,7 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
         public string Email { get; set; }
         public string NumeroTelefono { get; set; }
 
-        public ClaseAbstracta(string pNombre, string pApellido, string pId,
+        public Ca_Datos_Generales(string pNombre, string pApellido, string pId,
             string pEmail, string pNumeroTelefono)
         {
             Nombre         = pNombre;

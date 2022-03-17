@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objetos\ClaseAbstracta.cs" />
+    <Compile Include="Objetos\Ca_Datos_Generales.cs" />
     <Compile Include="Objetos\ClientesList.cs" />
     <Compile Include="Objetos\Empleado.cs" />
     <Compile Include="Objetos\Clientes.cs" />

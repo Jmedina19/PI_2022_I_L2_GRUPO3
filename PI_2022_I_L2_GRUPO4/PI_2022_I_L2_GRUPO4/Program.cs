@@ -13,6 +13,7 @@ namespace PI_2022_I_L2_GRUPO3
 {
     internal class Program
     {
+        // Cambien la direccion del Filename que se encuentra en la carpeta bin y coloque el de su computadora para ambos casos
         const string FILENAME = @"C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\ClientesList.json";
         const string FILENAME2 = @"C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\JuegosList.json";
         static ClientesList clientesList = new ClientesList();
@@ -35,12 +36,12 @@ namespace PI_2022_I_L2_GRUPO3
             jsontxt1 = File.ReadAllText(FILENAME);
             jsontxt2 = File.ReadAllText(FILENAME2);
             ClientesList clientesList= Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
-            //JuegosList juegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+            JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
             Program objectProgram = new Program();
             char seguir = 'N';
             bool menu1 = true, menu2 = true,menu3=true,menu4=true,metodoborrar=true;
             string Nombre, Apellido, Id, Email, NumeroTelefono;
-            int cantidadjuegoscompra1 = 0, cantidadjuegoscompra2 = 0, cantidadjuegoscompra3 = 0;
+            int cantidadjuegoscompra1 = 0;
 
 
             do
@@ -82,9 +83,7 @@ namespace PI_2022_I_L2_GRUPO3
                                     Main(null);
                                     break;
                             }
-                            //WriteLine("Si desea seguir, Teclee S");
-                            //seguir = Char.Parse(ReadLine().Trim());
-                            //seguir.ToString().ToUpper() == "S"
+                      
                         } while (menu1==true);
                         ReadLine();
                         break;
@@ -121,17 +120,14 @@ namespace PI_2022_I_L2_GRUPO3
                         do
                         {
                             WriteLine("Tenemos en existencia los sigientes juegos");
-
-                            //WriteLine($"Juego #1:\n {Juego1}");
-                            //WriteLine($"Juego #2:\n {}");
-                            //WriteLine($"Juego #3:\n {}\n");
+                            objectProgram.ListarJuegos();
+                            ReadLine();
                             menu3 = false;
                         } while (menu3 == true);
                         break;
                     case "4":
                         Clear();
-                        WriteLine("Que Juego desea comprar" + "\n1) Call of duty" + "\n2) Brawl Stars" +
-                             "\n3) Fall guys");
+                        WriteLine($"Que Juego desea comprar ");
                         var opcion4 = ReadLine();
                         switch (opcion4)
                         {
@@ -308,11 +304,10 @@ namespace PI_2022_I_L2_GRUPO3
                     WriteLine("Clientes Existentes");
                     foreach (var cliente in clientesList.clientesList)
                     {
-                        WriteLine($"Nombre del cliente:\n {Nombre} ");
-                        WriteLine($"Nombre del cliente:\n{Apellido}");
-                        WriteLine($"Id del cliente:\n {Id}");
-                        WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
-                        WriteLine($"Email del client:\n {Email}");
+                        WriteLine($"Nombre del cliente:\n {cliente.Nombre} {cliente.Apellido} ");                      
+                        WriteLine($"Id del cliente:\n {cliente.Id}");
+                        WriteLine($"Numero Telefonico del cliente:\n {cliente.NumeroTelefono}");
+                        WriteLine($"Email del client:\n {cliente.Email}");
                         WriteLine("");
                     }
                     WriteLine("Se han Listados los Clientes en existencia Exitosamente");
@@ -336,9 +331,10 @@ namespace PI_2022_I_L2_GRUPO3
                 CodigoGame, PriceGame);
             try
             {
+                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = juegosList != null ? juegosList.Search(id) : null;
+                var juegoSearch = JuegosList != null ? JuegosList.Search(id) : null;
                 if (juegoSearch == null)
                 {
                     juegosnew.Id = id;
@@ -383,21 +379,22 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
+                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = juegosList.Search(id);
+                var juegoSearch = JuegosList.Search(id);
                 if (juegoSearch != null)
                 {
 
                     juegosList.Delet(id);
-                    jsontxt2 = JsonConvert.SerializeObject(juegosList, Formatting.Indented);
+                    jsontxt2 = JsonConvert.SerializeObject(JuegosList, Formatting.Indented);
                     File.WriteAllText(FILENAME2, jsontxt2);
-                    WriteLine("El Cliente ha sido Borrado Exitosamente");
+                    WriteLine("El Juego ha sido Borrado Exitosamente");
 
                 }
                 else
                 {
-                    WriteLine("Id de Cliente incorrecto,Intente de nuevo ");
+                    WriteLine("Codigo de Juego incorrecto,Intente de nuevo ");
                     EliminarJuegos();
                 }
             }
@@ -412,25 +409,30 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
+                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 bool Found = false;
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = juegosList.Search(id);//!= null ? .Search(id) : null;
+                var juegoSearch = JuegosList.Search(id);//!= null ? .Search(id) : null;
                 if (juegoSearch == null)
                 {
 
-                    WriteLine("Clientes Existentes");
-                    foreach (var cliente in juegosList.Juegoslist)
+                    WriteLine("Juegos Existentes");
+                    foreach (var juego in JuegosList.Juegoslist)
                     {
-                        if (cliente.Id == id)
+                        if (juego.Id == id)
                         {
-
+                            WriteLine($"Nombre del Autor:\n {juego.Nombre} {juego.Apellido}");
+                            WriteLine($"Id del Autor:\n {juego.Id}");
+                            WriteLine($"Numero Telefonico de la Empresa:\n {juego.NumeroTelefono}");
+                            WriteLine($"Email de la Empresa:\n {juego.Email}");
+                            WriteLine($"Nombre del Juego:\n {juego.NombreGame} ");
+                            WriteLine($"Descripcion de Juego:\n {juego.DescripcionGame}");
+                            WriteLine($"Numero Telefonico del cliente:\n {juego.CodigoGame}");
+                            WriteLine($"Precio del Juego:\n {juego.PriceGame}");
+                            WriteLine("");
                         }
-                        WriteLine($"Nombre del cliente:\n {Nombre} {Apellido}");
-                        WriteLine($"Id del cliente:\n {Id}");
-                        WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
-                        WriteLine($"Email del client:\n {Email}");
-                        WriteLine("");
+                       
                     }
                     if (Found)
                     {
@@ -438,13 +440,13 @@ namespace PI_2022_I_L2_GRUPO3
                     }
                     else
                     {
-                        WriteLine("No se ha encontrado el Cliente ");
+                        WriteLine("No se ha encontrado el Juego ");
 
                     }
                 }
                 else
                 {
-                    WriteLine("Datos de Cliente vacios");
+                    WriteLine("Datos de Juego vacios");
 
                 }
 
@@ -462,17 +464,23 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-
-                if (juegosList != null)
+                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+                if (JuegosList != null)
                 {
 
                     WriteLine("Juegos Existentes");
-                    foreach (var juego in juegosList.Juegoslist)
+                    foreach (var juego in JuegosList.Juegoslist)
                     {
-                        WriteLine($"Nombre del cliente:\n {Nombre} {Apellido}");
-                        WriteLine($"Id del cliente:\n {Id}");
-                        WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
-                        WriteLine($"Email del client:\n {Email}");
+                        WriteLine($"Nombre del Autor:\n {juego.Nombre} {juego.Apellido}");
+                        WriteLine($"Id del Autor:\n {juego.Id}");
+                        WriteLine($"Numero Telefonico de la Empresa:\n {juego.NumeroTelefono}");
+                        WriteLine($"Email de la Empresa:\n {juego.Email}");
+                        WriteLine($"Nombre del Juego:\n {juego.NombreGame}");
+                        WriteLine($"Descripcion del Juego:\n {juego.DescripcionGame}");
+                        WriteLine($"Codigo del Juego :\n {juego.CodigoGame}");
+                        WriteLine($"Precio del Juego:\n {juego.PriceGame}");
+
+
                         WriteLine("");
                     }
                     WriteLine("Se han Listados los Juegos en existencia Exitosamente");
@@ -490,214 +498,6 @@ namespace PI_2022_I_L2_GRUPO3
                 throw;
             }
         }
-        //var Juego1 = new Juegos("Steve", "Fudoka", "1357-9024-68014", "activision@gmail.com", "2235-4956", "Call of Duty", "Este Juego es uno de los mejores juegos multijugador " +
-        //  "en primera persona shooter", "48372604", 145.14M);
-
     } 
 }
-/*string nombrecliente, apellidocliente, idcliente, emailcliente,
-                 numerotelefonocliente, decicion;
-             int cantidadjuegoscompra1 = 0, cantidadjuegoscompra2 = 0, cantidadjuegoscompra3 = 0;
-             bool menu, menu1 = true, choice = true;
-             List<Clientes> listcliente = new List<Clientes>();
-             List<Empleado> empleados = new List<Empleado>();
-             List<Juegos> listjuegos = new List<Juegos>();
 
-
-             
-             var Juego2 = new Juegos("Isse","Hakuya","0309-1987-59738","supercell@gmail.com","2209-1922","Brawl Stars", "Este juego es para jugar en familia y relajarse despues" +
-                   " de un arduo dia", "13579246", 35.99M);
-             var Juego3 = new Juegos("Midoriya","Izuku","0125-1968-05593","splashgames@gamil.com","2220-4106", "Fall Guys", "Este Juego en linea esta echo para juntar a las familias " +
-                   "y pasar un buen rato con muchas carcajadas de por medio", "02468964", 45.99M);
-             var empleado1 = new Empleado("Jean", "Jacques", "0901-1999-08794",
-                   "epicgames@ujcv.edu.hn", "9452-7994");
-
-
-             WriteLine("Bienvenidos Epic Game Store\n");
-
-             WriteLine(empleado1.ToString());
-
-
-             do
-             {
-
-                 WriteLine("Elija una opcion y precione enter\n" + "\n.1) Ver inventario de juegos " +
-                 "\n.2) Comprar juego" + "\n.3)  Menu Administrativo" + "\n4) Salir");
-                 decicion = ReadLine();
-
-                 switch (decicion)
-                 {
-
-                     case "1":
-                         Clear();
-                         menu = true;
-                         do
-                         {
-                             WriteLine("Tenemos en existencia los sigientes juegos");
-
-                             WriteLine($"Juego #1:\n {Juego1}");
-                             WriteLine($"Juego #2:\n {Juego2}");
-                             WriteLine($"Juego #3:\n {Juego3}\n");
-                             menu = false;
-                         } while (menu);
-                         break;
-
-                     case "2":
-                         Clear();
-                         WriteLine("Que Juego desea comprar" + "\n1) Call of duty" + "\n2) Brawl Stars" +
-                             "\n3) Fall guys");
-                         decicion = ReadLine();
-                         switch (decicion)
-                         {
-                             case "1":
-                                 Clear();
-                                 do
-                                 {
-                                     WriteLine("Ingrese la cantidad de este juego que desea comprar ");
-                                     cantidadjuegoscompra1 = int.Parse(ReadLine());
-                                 } while (cantidadjuegoscompra1 == 0);
-                                 var Factura1 = new Factura("Steve", "Fudoka", "1357-9024-68014", "activision@gmail.com", "48372604", "Este Juego es uno de los mejores juegos multijugador " +
-                            "en primera persona shooter", 145.14M, "Call of Duty", "2235-4956", 0.15M, 0.05M, cantidadjuegoscompra1);
-                                 do
-                                 {
-                                     WriteLine("Ingrese los datos del Cliente:\n");
-
-                                     WriteLine("Ingrese el Nombre");
-                                     nombrecliente = ReadLine();
-                                     WriteLine("Ingrese el Apellido");
-                                     apellidocliente = ReadLine();
-                                     WriteLine("Ingrese el numero de Identificacion");
-                                     idcliente = ReadLine();
-                                     WriteLine("Ingrese el Numero de Telefono");
-                                     numerotelefonocliente = ReadLine();
-                                     WriteLine("Ingrese el Email");
-                                     emailcliente = ReadLine();
-                                     Clear();
-                                     var Cliente1 = new Clientes(nombrecliente, apellidocliente, idcliente, emailcliente, numerotelefonocliente);
-                                     WriteLine(empleado1.ToString());
-                                     WriteLine(Cliente1.ToString());
-                                     WriteLine(Factura1.ToString());
-                                     WriteLine($"El Subtotal es: {Factura1.CalcularSubtotal():c}");
-                                     //WriteLine($"El Descuento por su compra es: {Factura1.CalcularDescuento():c}");
-                                     //WriteLine($"El ISV de su compre es {Factura1.CalcularISV():c}");
-                                     // WriteLine($"El Total a pagar por su compra es: {Factura1.CalcularTotal():c}");
-                                     // WriteLine("Muchas gracias por su compra");
-
-
-                                 } while (choice == false);
-                                 break;
-
-                             case "2":
-                                 Clear();
-
-                                do
-                                {
-                                   WriteLine("Ingrese la cantidad de este juego que desea comprar ");
-                                   cantidadjuegoscompra2 = int.Parse(ReadLine());
-                                } while (cantidadjuegoscompra2 == 0);
-                                 var Factura2 = new Factura("Isse", "Hakuya", "0309-1987-59738", "supercell@gmail.com", "2209-1922", "Este juego es para jugar en familia y relajarse despues" +
-                           " de un arduo dia", 35.99M, "Brawl Stars", "13579246", 0.15M, 0.05M, cantidadjuegoscompra2);
-                                 do
-                                 {
-                                     WriteLine("Ingrese los datos del Cliente:\n");
-
-                                     WriteLine("Ingrese el Nombre");
-                                     nombrecliente = ReadLine();
-                                     WriteLine("Ingrese el Apellido");
-                                     apellidocliente = ReadLine();
-                                     WriteLine("Ingrese el numero de Identificacion");
-                                     idcliente = ReadLine();
-                                     WriteLine("Ingrese el Numero de Telefono");
-                                     numerotelefonocliente = ReadLine();
-                                     WriteLine("Ingrese el Email");
-                                     emailcliente = ReadLine();
-                                     Clear();
-                                     var Cliente1 = new Clientes(nombrecliente, apellidocliente, idcliente, emailcliente, numerotelefonocliente);
-                                     WriteLine(empleado1.ToString());
-                                     WriteLine(Cliente1.ToString());
-                                     WriteLine(Factura2.ToString());
-                                     WriteLine($"El Subtotal es: {Factura2.CalcularSubtotal():c}");
-                                     WriteLine($"El Descuento por su compra es: {Factura2.CalcularDescuento():c}");
-                                     WriteLine($"El ISV de su compre es {Factura2.CalcularISV():c}");
-                                     WriteLine($"El Total a pagar por su compra es: {Factura2.CalcularTotal():c}");
-                                     WriteLine("Mucchas gracias por su compra");
-                                 } while (choice == false);
-                                 break;
-                             case "3":
-                                 Clear();
-
-
-                                 WriteLine("Ingrese la cantidad de este juego que desea comprar ");
-                                 cantidadjuegoscompra3 = int.Parse(ReadLine());
-                                 do
-                                 {
-                                     WriteLine("Ingrese la cantidad de este juego que desea comprar ");
-                                     cantidadjuegoscompra3 = int.Parse(ReadLine());
-
-                                 } while (cantidadjuegoscompra3 == 0);
-                                 var Factura3 = new Factura("Midoriya", "Izuku", "0125-1968-05593", "splashgames@gamil.com", "2220-4106", "Este Juego en linea esta echo para juntar a las familias " +
-                          "y pasar un buen rato con muchas carcajadas de por medio", 45.99M, "Fall Guys", "02468964", 0.015M, 0.06M, cantidadjuegoscompra3);
-                                 do
-                                 {
-                                     WriteLine("Ingrese los datos del Cliente:\n");
-
-                                     WriteLine("Ingrese el Nombre");
-                                     nombrecliente = ReadLine();
-                                     WriteLine("Ingrese el Apellido");
-                                     apellidocliente = ReadLine();
-                                     WriteLine("Ingrese el numero de Identificacion");
-                                     idcliente = ReadLine();
-                                     WriteLine("Ingrese el Numero de Telefono");
-                                     numerotelefonocliente = ReadLine();
-                                     WriteLine("Ingrese el Email");
-                                     emailcliente = ReadLine();
-                                     Clear();
-                                     var Cliente1 = new Clientes(nombrecliente, apellidocliente, idcliente, emailcliente, numerotelefonocliente);
-                                     WriteLine(empleado1.ToString());
-                                     WriteLine(Cliente1.ToString());
-                                     WriteLine(Factura3.ToString());
-                                     WriteLine($"El Subtotal es: {Factura3.CalcularSubtotal():c}");
-                                     WriteLine($"El Descuento por su compra es: {Factura3.CalcularDescuento():c}");
-                                     WriteLine($"El ISV de su compre es {Factura3.CalcularISV():c}");
-                                     WriteLine($"El Total a pagar por su compra es: {Factura3.CalcularTotal():c}");
-                                     WriteLine("Mucchas gracias por su compra");
-                                 } while (choice == false);
-                                 break;
-                         }
-                         break;
-
-                     case "3":
-                         Clear();
-                         WriteLine("Elija una opcion y precione enter\n" + "\n.1) Listar todos los datos" + "\n.2) Buscar datos" +
-                                   "\n.3) Agregar nuevos datos" + "\n4) Salir");
-                         decicion = ReadLine();
-                         switch (decicion)
-                         {
-                             case "1":
-                                 Clear();
-                                 WriteLine("Lista de empleados");
-
-                                 WriteLine(empleado1.ToString());
-                                 WriteLine("Lista de Juegos");
-                                 WriteLine(Juego1.ToString());
-                                 WriteLine(Juego2.ToString());
-                                 WriteLine(Juego3.ToString());
-
-                                 break;
-                             case "2":
-                                 Clear();
-
-                                 break;
-                         }
-                         break;
-
-
-
-
-                     case "4":
-                         menu1 = false;
-                         break;
-                 }
-
-             } while (menu1 == true);
-             ReadLine();*/
