@@ -74,9 +74,5 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
            $"El Descuento es:\n {Descuento:c}\n" +
            $"El ISV es:\n {ISV:c}\n";
           
-           
-
-
-
     }
 }

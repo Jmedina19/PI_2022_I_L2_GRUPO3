@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B2E2704-DD02-487A-880C-692B8DA2DEB0}</ProjectGuid>
+    <ProjectGuid>{E07C3301-99AC-40DD-BD63-580C96D01000}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PI_2022_I_L2_GRUPO4</RootNamespace>
-    <AssemblyName>PI_2022_I_L2_GRUPO4</AssemblyName>
+    <RootNamespace>ConsoleApplication6</RootNamespace>
+    <AssemblyName>ConsoleApplication6</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,19 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objetos\ClaseAbstracta.cs" />
-    <Compile Include="Objetos\ClientesList.cs" />
-    <Compile Include="Objetos\Empleado.cs" />
-    <Compile Include="Objetos\Clientes.cs" />
-    <Compile Include="Objetos\Factura.cs" />
-    <Compile Include="Objetos\Juegos.cs" />
-    <Compile Include="Objetos\JuegosList.cs" />
+    <Compile Include="objetos\DVD.cs" />
+    <Compile Include="objetos\Libro.cs" />
+    <Compile Include="objetos\Productos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

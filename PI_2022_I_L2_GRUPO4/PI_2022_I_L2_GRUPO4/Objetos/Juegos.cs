@@ -10,9 +10,9 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
     internal class Juegos:ClaseAbstracta
     {
 
-        public string NombreGame { get; }
-        public string DescripcionGame { get;}
-        public string CodigoGame { get; }
+        public string NombreGame { get; set; }
+        public string DescripcionGame { get; set; }
+        public string CodigoGame { get; set; }
         protected decimal pricegame;
 
 
@@ -21,9 +21,9 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
             : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
         {
             DescripcionGame = pDescripcionGame;
-            PriceGame = pPriceGame;
-            NombreGame = pNombreGame;
-            CodigoGame = pCodigoGame;
+            PriceGame       = pPriceGame;
+            NombreGame      = pNombreGame;
+            CodigoGame      = pCodigoGame;
         }
 
         public decimal PriceGame
@@ -46,14 +46,15 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
 
 
         public override string ToString() =>
-            $"Nombre del Autor: {Nombre} {Apellido}\n" +
-            $"Numero de Identificacion: {Id}\n" +
-            $"Email de la empresa: {Email}\n" +
-            $"Numero Tefonico de la empresa: {NumeroTelefono}\n"+
+            
             $"El Nombre del juego es:\n {NombreGame}\n" +
             $"El Codigo del Juegos es:\n {CodigoGame}\n" +
             $"La Descripcion del juegos es:\n {DescripcionGame}\n" +
-            $"El Precio del juego es:\n {PriceGame:c}";
+            $"El Precio del juego es:\n {PriceGame:c}\n"+
+            $"Nombre del Autor:\n {Nombre} {Apellido}\n" +
+            $"Numero de Identificacion:\n {Id}\n" +
+            $"Email de la empresa:\n {Email}\n" +
+            $"Numero Tefonico de la empresa:\n {NumeroTelefono}";
 
 
     
