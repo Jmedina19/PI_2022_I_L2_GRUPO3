@@ -1,0 +1,18 @@
+{
+  "Clienteslist": [
+    {
+      "Nombre": "Daniel",
+      "Apellido": "Guzman",
+      "Id": "2",
+      "Email": "daniel.guzman4@ujcv.edu.hn",
+      "NumeroTelefono": "22384508"
+    },
+    {
+      "Nombre": "Natsu",
+      "Apellido": "Dragneel",
+      "Id": "3",
+      "Email": "natsu.dragneel3@ujcv.edu.hn",
+      "NumeroTelefono": "22450516"
+    }
+  ]
+}

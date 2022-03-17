@@ -20,23 +20,23 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
         //        string Nombre, Apellido, Id, Email,
         //        NumeroTelefono;
        
-        public List<Clientes> Clienteslist { get; set; }
+        public List<Clientes> clientesList { get; set; }
 
         public ClientesList()
         {
-            Clienteslist = new List<Clientes>();
+            clientesList = new List<Clientes>();
         }
         public void Add(Clientes pclientes)
         {
-            Clienteslist.Add(pclientes);
+            clientesList.Add(pclientes);
         }
         public Clientes Search(string pId ) 
         {
-            if (Clienteslist == null)
+            if (clientesList == null)
             {
                 return null;
             }
-            foreach (var clientes in Clienteslist)
+            foreach (var clientes in clientesList)
             {
                 if (clientes.Id== pId)
                 {
@@ -47,11 +47,11 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
         }
         public void Delet(string pId)
         {
-            foreach (var clientes in Clienteslist)
+            foreach (var clientes in clientesList)
             {
                 if (clientes.Id == pId)
                 {
-                    Clienteslist.Remove(clientes);
+                    clientesList.Remove(clientes);
                 }
                 
             }

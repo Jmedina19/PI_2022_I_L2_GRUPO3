@@ -34,11 +34,11 @@ namespace PI_2022_I_L2_GRUPO3
                    "epicgames@ujcv.edu.hn", "9452-7994");
             jsontxt1 = File.ReadAllText(FILENAME);
             jsontxt2 = File.ReadAllText(FILENAME2);
-            clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
-            //juegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+            ClientesList clientesList= Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+            //JuegosList juegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
             Program objectProgram = new Program();
             char seguir = 'N';
-            bool menu1 = true, menu2 = true,menu3=true;
+            bool menu1 = true, menu2 = true,menu3=true,menu4=true,metodoborrar=true;
             string Nombre, Apellido, Id, Email, NumeroTelefono;
             int cantidadjuegoscompra1 = 0, cantidadjuegoscompra2 = 0, cantidadjuegoscompra3 = 0;
 
@@ -53,7 +53,7 @@ namespace PI_2022_I_L2_GRUPO3
                     case "1":
                         Clear();
                         WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
-                                  "\n3) - Eliminar " + "\n4) - Listar " + "\n5) - Regresar");
+                                  "\n3) - Eliminar " + "\n4) - Listar "+"\n5) Regresar");
                         var opcion2 = ReadLine();
                         do
                         {
@@ -74,23 +74,25 @@ namespace PI_2022_I_L2_GRUPO3
                                 case "4":
                                     Clear();
                                     objectProgram.ListarCliente();
-
                                     break;
                                 case "5":
-                                    Clear();
                                     menu1 = false;
                                     break;
+                                default:
+                                    Main(null);
+                                    break;
                             }
-                            //WriteLine("Si desea regresar, Teclee N");
-                            //seguir = char.Parse(ReadLine().Trim());
-                        } while (menu1 == true);
-
+                            //WriteLine("Si desea seguir, Teclee S");
+                            //seguir = Char.Parse(ReadLine().Trim());
+                            //seguir.ToString().ToUpper() == "S"
+                        } while (menu1==true);
+                        ReadLine();
                         break;
                     case "2":
                         Clear();
                         Clear();
                         WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
-                                  "\n3) - Eliminar " + "\n4) - Listar " + "\n5) - Regresar");
+                                  "\n3) - Eliminar " + "\n4) - Listar ");
                         var opcion3 = ReadLine();
                         do
                         {
@@ -108,15 +110,14 @@ namespace PI_2022_I_L2_GRUPO3
                                 case "4":
                                     objectProgram.ListarJuegos();
                                     break;
-                                case "5":
-                                    break;
+                                    menu2 = false;
                             }
 
-                        } while (seguir.ToString().ToUpper() == "S");
+                        } while (menu2==true);
                         break;
                     case "3":
                         Clear();
-                        menu2 = true;
+                       
                         do
                         {
                             WriteLine("Tenemos en existencia los sigientes juegos");
@@ -124,8 +125,8 @@ namespace PI_2022_I_L2_GRUPO3
                             //WriteLine($"Juego #1:\n {Juego1}");
                             //WriteLine($"Juego #2:\n {}");
                             //WriteLine($"Juego #3:\n {}\n");
-                            menu2 = false;
-                        } while (menu2 == true);
+                            menu3 = false;
+                        } while (menu3 == true);
                         break;
                     case "4":
                         Clear();
@@ -156,23 +157,25 @@ namespace PI_2022_I_L2_GRUPO3
                                     WriteLine($"El ISV de su compre es {Factura1.CalcularISV():c}");
                                     WriteLine($"El Total a pagar por su compra es: {Factura1.CalcularTotal():c}");
                                     WriteLine("Muchas gracias por su compra");
+                                    menu4 = false;
 
 
-                                } while (menu3 != true);
+                                } while (menu4== true);
                                 break;
 
 
-                            case "5":
+                            /*case "5":
                                 Clear();
                                 WriteLine("Si desea continuar, Teclee s");
-                                seguir = char.Parse(ReadLine().Trim());
-                                break;
+                                seguir = Char.Parse(ReadLine().Trim());
+                                break;*/
                         }break;
                 }
             } while (seguir.ToString().ToUpper() == "S");
         }
-        void AgregarCliente()
+        private void AgregarCliente()
         {
+            ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
             Clientes clientesnew = new Clientes(Nombre, Apellido, Id, Email, NumeroTelefono);
             try
             {
@@ -197,7 +200,6 @@ namespace PI_2022_I_L2_GRUPO3
                     File.WriteAllText(FILENAME, jsontxt1);
                     WriteLine("Nuevo Cliente Guardado Exitosamente");
 
-
                 }
                 else
                 {
@@ -216,6 +218,7 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
+                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
                 var clienteSearch = clientesList.Search(id);//!= null ? .Search(id) : null;
@@ -245,40 +248,43 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
+                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 bool Found = false;
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
                 var clienteSearch = clientesList.Search(id);//!= null ? .Search(id) : null;
-                if (clienteSearch == null)
+                if (clienteSearch != null)
                 {
 
                     WriteLine("Clientes Existentes");
-                    foreach (var cliente in clientesList.Clienteslist)
+                    foreach (var cliente in clientesList.clientesList)
                     {
                         if (cliente.Id == id)
                         {
-                            WriteLine($"Nombre del cliente:\n {Nombre} {Apellido}");
-                            WriteLine($"Id del cliente:\n {Id}");
-                            WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
-                            WriteLine($"Email del client:\n {Email}");
+                            WriteLine($"Nombre del cliente:\n {cliente.Nombre} {cliente.Apellido}");
+                            WriteLine($"Id del cliente:\n {cliente.Id}");
+                            WriteLine($"Numero Telefonico del cliente:\n {cliente.NumeroTelefono}");
+                            WriteLine($"Email del client:\n {cliente.Email}");
                             WriteLine("");
+                            Found = true;
                         }
 
                     }
                     if (Found)
                     {
                         WriteLine("Satisfactorio");
+                        ReadLine();
                     }
                     else
                     {
                         WriteLine("No se ha encontrado el Cliente ");
-
+                        ReadLine();
                     }
                 }
                 else
                 {
                     WriteLine("Datos de Cliente vacios");
-
+                    ReadLine();
                 }
 
 
@@ -295,14 +301,15 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-
+                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 if (clientesList != null)
                 {
 
                     WriteLine("Clientes Existentes");
-                    foreach (var cliente in clientesList.Clienteslist)
+                    foreach (var cliente in clientesList.clientesList)
                     {
-                        WriteLine($"Nombre del cliente:\n {Nombre} {Apellido}");
+                        WriteLine($"Nombre del cliente:\n {Nombre} ");
+                        WriteLine($"Nombre del cliente:\n{Apellido}");
                         WriteLine($"Id del cliente:\n {Id}");
                         WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
                         WriteLine($"Email del client:\n {Email}");
