@@ -11,11 +11,7 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
 {
     internal class Empleados_List
     {
-        //const string FILENAME3 = @"C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\JuegosList.json";
-        //static Empleados_List empleadosList = new Empleados_List();
-        
-        //string Nombre, Apellido, Id, Email,
-        //NumeroTelefono;
+ 
         public List<Empleado> empleadosList { get; set; }
 
         public Empleados_List()

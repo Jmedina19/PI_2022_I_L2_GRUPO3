@@ -1,14 +1,12 @@
 {
-  "Juegoslist": [
+  "empleadosList": [
     {
-      "Nombre":"Jean",
-      "Apellido":"Jacques",
-      "Id":"1",
-      "Email":"gamestore.jj@ujcv.edu.hn",
-      "NumeroTelefono":"2209-1923",
-      "SalarioMensual":15500
-       }
-     ]
+      "SalarioMensual": 15500.0,
+      "Nombre": "Jean",
+      "Apellido": "Jacques",
+      "Id": "1",
+      "Email": "gamestore.jj@ujcv.edu.hn",
+      "NumeroTelefono": "22384056"
+    }
+  ]
 }
-
-

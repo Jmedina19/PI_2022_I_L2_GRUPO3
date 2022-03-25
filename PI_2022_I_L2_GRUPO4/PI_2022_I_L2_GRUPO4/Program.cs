@@ -34,19 +34,19 @@ namespace PI_2022_I_L2_GRUPO3
         static void Main(string[] args)
         {
 
-            
+
             jsontxt1 = File.ReadAllText(FILENAME);
             jsontxt2 = File.ReadAllText(FILENAME2);
-            jsontxt2 = File.ReadAllText(FILENAME3);
-            ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
-            JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
-            Empleados_List empleadosList = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+            jsontxt3 = File.ReadAllText(FILENAME3);
+             clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+             juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+             empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
             Program objectProgram = new Program();
             char seguir = 'N';
             bool menu1 = true, menu2 = true, menu3 = true, menu4 = true;
             string Nombre, Apellido, Id, Email, NumeroTelefono;
             int cantidadjuegoscompra1 = 0;
-            
+
 
             do
             {
@@ -59,11 +59,12 @@ namespace PI_2022_I_L2_GRUPO3
                         Clear();
                         do
 
-                        {   WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
-                                  "\n3) - Eliminar " + "\n4) - Listar " + "\n5) - Actualizar Clientes " + "\n6) Regresar");
+                        {
+                            WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
+                                  "\n3) - Eliminar " + "\n4) - Listar " + "\n5) - Actualizar Clientes " + "\n6) - Regresar");
                             var opcion2 = ReadLine();
-                        
-                        
+
+
                             switch (opcion2)
                             {
                                 case "1":
@@ -87,6 +88,8 @@ namespace PI_2022_I_L2_GRUPO3
                                     break;
                                 case "6":
                                     menu1 = false;
+                                    seguir = 'S';
+                                    Clear();
                                     break;
                                 default:
                                     Main(null);
@@ -94,16 +97,17 @@ namespace PI_2022_I_L2_GRUPO3
                             }
 
                         } while (menu1 == true);
-                        ReadLine();
+                        //ReadLine();
                         break;
                     case "2":
                         Clear();
                         do
-                        {  WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
-                                  "\n3) - Eliminar " + "\n4) - Listar" + "\n5) - Actualizar Clientes " + "\n6) Regresar");
-                           var opcion3 = ReadLine();
-                       
-                        
+                        {
+                            WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar" + "\n2) - Buscar" +
+                                   "\n3) - Eliminar " + "\n4) - Listar" + "\n5) - Actualizar Juego " + "\n6) - Regresar");
+                            var opcion3 = ReadLine();
+
+
                             switch (opcion3)
                             {
                                 case "1":
@@ -123,6 +127,8 @@ namespace PI_2022_I_L2_GRUPO3
                                     break;
                                 case "6":
                                     menu2 = false;
+                                    seguir = 'S';
+                                    Clear();
                                     break;
                                 default:
                                     Main(null);
@@ -134,14 +140,15 @@ namespace PI_2022_I_L2_GRUPO3
                     case "3":
                         Clear();
                         do
-                        {  WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar Empleado" + "\n2) - Buscar Empleado" +
-                                 "\n3) - Eliminar Empleado" + "\n4) - Listar Empleados" + "\n5) - Actualizar Empleado" + "\n6) - Regresar");
-                           var opcion4 = ReadLine();
+                        {
+                            WriteLine("Elija una opcion y precione enter\n" + "\n1) - Agregar Empleado" + "\n2) - Buscar Empleado" +
+                                  "\n3) - Eliminar Empleado" + "\n4) - Listar Empleados" + "\n5) - Actualizar Empleado" + "\n6) - Regresar");
+                            var opcion4 = ReadLine();
 
                             switch (opcion4)
                             {
                                 case "1":
-                                    objectProgram.AgregarEmpleado();     
+                                    objectProgram.AgregarEmpleado();
                                     break;
                                 case "2":
                                     objectProgram.BuscarEmpleado();
@@ -157,6 +164,8 @@ namespace PI_2022_I_L2_GRUPO3
                                     break;
                                 case "6":
                                     menu2 = false;
+                                    seguir = 'S';
+                                    Clear();
                                     break;
                                 default:
                                     Main(null);
@@ -174,26 +183,37 @@ namespace PI_2022_I_L2_GRUPO3
                             objectProgram.ListarJuegos();
                             ReadLine();
                             menu3 = false;
+                            seguir = 'S';
+                            Clear();
+                            break;
                         } while (menu3 == true);
                         break;
                     case "5":
                         Clear();
-                        WriteLine($"Que Juego desea comprar ");
+                        objectProgram.ListarJuegos();
+                        WriteLine($"ingrese codigo de Juego que desea comprar\n ");
                         var opcion5 = ReadLine();
-                        switch (opcion5)
+                        Clear();
+                       
+                        do
                         {
-                            case "1":
-                                Clear();
-                                do
-                                {
-                                    WriteLine("Ingrese la cantidad de este juego que desea comprar ");
-                                    cantidadjuegoscompra1 = int.Parse(ReadLine());
-                                } while (cantidadjuegoscompra1 == 0);
-                                var Factura1 = new Factura("Steve", "Fudoka", "1357-9024-68014", "activision@gmail.com", "48372604", "Este Juego es uno de los mejores juegos multijugador " +
-                                "en primera persona shooter", 145.14M, "Call of Duty", "2235-4956", 0.15M, 0.05M, cantidadjuegoscompra1);
-                                do
-                                {
+                            WriteLine("\nFACTURA\n");
+                            WriteLine("Ingrese la cantidad de este juego que desea comprar ");
+                            cantidadjuegoscompra1 = int.Parse(ReadLine());
+                        } while (cantidadjuegoscompra1 == 0);
 
+
+                        if (juegosList != null)
+                        {
+
+
+                            foreach (var juego in juegosList.juegoslist)
+
+                            {
+                                if (juego.CodigoGame == opcion5)
+                                {
+                                    var Factura1 = new Factura(juego.Nombre, juego.Apellido, juego.Id, juego.Email, juego.NumeroTelefono, juego.DescripcionGame,
+                                        juego.PriceGame, juego.NombreGame, juego.CodigoGame, 0.15M, 0.05M, cantidadjuegoscompra1);
 
                                     WriteLine(Factura1.ToString());
                                     WriteLine($"El Subtotal es: {Factura1.CalcularSubtotal():c}");
@@ -202,11 +222,18 @@ namespace PI_2022_I_L2_GRUPO3
                                     WriteLine($"El Total a pagar por su compra es: {Factura1.CalcularTotal():c}");
                                     WriteLine("Muchas gracias por su compra");
                                     menu4 = false;
-
-
-                                } while (menu4 == true);
-                                break;
+                                    break;
+                                }
+                            }
+                            ReadLine();
                         }
+                        break;
+                        
+                    case "6":
+                        //menu1 = false;
+                        WriteLine("Muchas gracias y adios");
+                        seguir = 'N';
+                        Clear();
                         break;
                 }
             } while (seguir.ToString().ToUpper() == "S");
@@ -214,55 +241,55 @@ namespace PI_2022_I_L2_GRUPO3
         private void AgregarCliente()
         {
             //int producto = 0;
-            ClientesList ClientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+            clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
             var clientesnew = new Clientes(Nombre, Apellido, Id, Email, NumeroTelefono);
             //do
             //{
-                try
+            try
+            {
+                WriteLine("Ingrese el Id: ");
+                var id = ReadLine();
+                var clienteSearch = clientesList != null ? clientesList.Search(id) : null;
+                if (clienteSearch == null)
                 {
-                    WriteLine("Ingrese el Id: ");
-                    var id = ReadLine();
-                    var clienteSearch = ClientesList != null ? ClientesList.Search(id) : null;
-                    if (clienteSearch == null)
-                    {
-                        clientesnew.Id = id;
-                        WriteLine("Ingrese el Nombre:");
-                        clientesnew.Nombre = ReadLine();
-                        WriteLine("Ingrese el Apellido:");
-                        clientesnew.Apellido = ReadLine();
-                        WriteLine("Ingrese el Id:");
-                        clientesnew.Id = ReadLine();
-                        WriteLine("Ingrese el Numero de Telefono:");
-                        clientesnew.NumeroTelefono = ReadLine();
-                        WriteLine("Ingrese el Email:");
-                        clientesnew.Email = ReadLine();
-                        clientesList.Add(clientesnew);
-                        jsontxt1 = JsonConvert.SerializeObject(clientesList, Formatting.Indented);
-                        File.WriteAllText(FILENAME, jsontxt1);
-                        WriteLine("Nuevo Cliente Guardado Exitosamente");
-                      
-                    }
-                    else
-                    {
-                        WriteLine("Id de Cliente incorrecto,Intente de nuevo ");
-                        AgregarCliente();
-                    }
+                    clientesnew.Id = id;
+                    WriteLine("Ingrese el Nombre:");
+                    clientesnew.Nombre = ReadLine();
+                    WriteLine("Ingrese el Apellido:");
+                    clientesnew.Apellido = ReadLine();
+                    WriteLine("Ingrese el Id:");
+                    clientesnew.Id = ReadLine();
+                    WriteLine("Ingrese el Numero de Telefono:");
+                    clientesnew.NumeroTelefono = ReadLine();
+                    WriteLine("Ingrese el Email:");
+                    clientesnew.Email = ReadLine();
+                    clientesList.Add(clientesnew);
+                    jsontxt1 = JsonConvert.SerializeObject(clientesList, Formatting.Indented);
+                    File.WriteAllText(FILENAME, jsontxt1);
+                    WriteLine("Nuevo Cliente Guardado Exitosamente");
+
                 }
-                catch (Exception)
+                else
                 {
-                    throw;
+                    WriteLine("Id de Cliente incorrecto,Intente de nuevo ");
+                    AgregarCliente();
                 }
-             //   WriteLine("Si desea seguir agregando clientes, Teclee 1 de lo contratio tecleo otro numero");
-              //  producto = int.Parse(ReadLine());
-           // } while ( producto != 6);
-            
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            //   WriteLine("Si desea seguir agregando clientes, Teclee 1 de lo contratio tecleo otro numero");
+            //  producto = int.Parse(ReadLine());
+            // } while ( producto != 6);
+
         }
         public void EliminarCliente()
         {
 
             try
             {
-                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+                clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
                 var clienteSearch = clientesList.Search(id);//!= null ? .Search(id) : null;
@@ -292,7 +319,7 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+                clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 bool Found = false;
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
@@ -345,7 +372,7 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+                clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
                 if (clientesList != null)
                 {
 
@@ -375,7 +402,7 @@ namespace PI_2022_I_L2_GRUPO3
         }
         public void ActualizarClientes()
         {
-            ClientesList clientesList = Newtonsoft.Json.JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
+            clientesList = JsonConvert.DeserializeObject<ClientesList>(jsontxt1);
             try
             {
                 WriteLine("Ingrese el Id: ");
@@ -393,7 +420,7 @@ namespace PI_2022_I_L2_GRUPO3
                     WriteLine("Numero del Cliente:");
                     clienteSearch.NumeroTelefono = ReadLine();
                     WriteLine("Email del Cliente:");
-                    clienteSearch.Email = ReadLine();;
+                    clienteSearch.Email = ReadLine(); ;
                     clientesList.Update(clienteSearch);
                     jsontxt1 = JsonConvert.SerializeObject(clientesList, Formatting.Indented);
                     File.WriteAllText(FILENAME, jsontxt1);
@@ -411,16 +438,17 @@ namespace PI_2022_I_L2_GRUPO3
                 throw;
             }
         }
+        //Juegos list
         public void AgregarJuegos()
         {
             var juegosnew = new Juegos(Nombreautor, Apellidoautor, Idautor, Emailempresa, NumeroTelefonoempresa, NombreGame, DescripcionGame,
                 CodigoGame, PriceGame);
             try
             {
-                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+                juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = JuegosList != null ? JuegosList.Search(id) : null;
+                var juegoSearch = juegosList != null ? juegosList.Search(id) : null;
                 if (juegoSearch == null)
                 {
                     juegosnew.Id = id;
@@ -465,15 +493,15 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+                juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = JuegosList.Search(id);
+                var juegoSearch = juegosList.Search(id);
                 if (juegoSearch != null)
                 {
 
                     juegosList.Delet(id);
-                    jsontxt2 = JsonConvert.SerializeObject(JuegosList, Formatting.Indented);
+                    jsontxt2 = JsonConvert.SerializeObject(juegosList, Formatting.Indented);
                     File.WriteAllText(FILENAME2, jsontxt2);
                     WriteLine("El Juego ha sido Borrado Exitosamente");
 
@@ -495,16 +523,16 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+                juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
                 bool Found = false;
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = JuegosList.Search(id);//!= null ? .Search(id) : null;
+                var juegoSearch = juegosList.Search(id);//!= null ? .Search(id) : null;
                 if (juegoSearch == null)
                 {
 
                     WriteLine("Juegos Existentes");
-                    foreach (var juego in JuegosList.Juegoslist)
+                    foreach (var juego in juegosList.juegoslist)
                     {
                         if (juego.Id == id)
                         {
@@ -550,12 +578,12 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
-                if (JuegosList != null)
+                juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+                if (juegosList != null)
                 {
 
                     WriteLine("Juegos Existentes");
-                    foreach (var juego in JuegosList.Juegoslist)
+                    foreach (var juego in juegosList.juegoslist)
                     {
                         WriteLine($"Nombre del Autor:\n {juego.Nombre} {juego.Apellido}");
                         WriteLine($"Id del Autor:\n {juego.Id}");
@@ -584,12 +612,12 @@ namespace PI_2022_I_L2_GRUPO3
         }
         public void ActualizarJuegos()
         {
-            JuegosList JuegosList = Newtonsoft.Json.JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
+            juegosList = JsonConvert.DeserializeObject<JuegosList>(jsontxt2);
             try
             {
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var juegoSearch = JuegosList.Search(id);
+                var juegoSearch = juegosList.Search(id);
                 if (juegoSearch != null)
                 {
                     juegoSearch.Id = id;
@@ -611,8 +639,8 @@ namespace PI_2022_I_L2_GRUPO3
                     juegoSearch.CodigoGame = ReadLine();
                     WriteLine("Precio del Juego");
                     juegoSearch.PriceGame = decimal.Parse(ReadLine());
-                    JuegosList.Update(juegoSearch);
-                    jsontxt3 = JsonConvert.SerializeObject(JuegosList, Formatting.Indented);
+                    juegosList.Update(juegoSearch);
+                    jsontxt3 = JsonConvert.SerializeObject(juegosList, Formatting.Indented);
                     File.WriteAllText(FILENAME2, jsontxt2);
                     WriteLine("Actualizado Exitosamente");
                 }
@@ -632,14 +660,15 @@ namespace PI_2022_I_L2_GRUPO3
         // empleados list
         private void AgregarEmpleado()
         {
-            Empleados_List Empleados_List = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+            
             var empleadosnew = new Empleado(Nombre, Apellido, Id, Email, NumeroTelefono, SalarioMensual);
             try
 
             {
+                empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var empleadosSearch = Empleados_List != null ? Empleados_List.Search(id) : null;
+                var empleadosSearch = empleadoslist != null ? empleadoslist.Search(id) : null;
                 if (empleadosSearch == null)
                 {
                     empleadosnew.Id = id;
@@ -675,17 +704,17 @@ namespace PI_2022_I_L2_GRUPO3
         }
         public void EliminarEmpleado()
         {
-            Empleados_List empleadosList = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+            empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
             try
             {
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var empleadosSearch = empleadosList.Search(id);
+                var empleadosSearch = empleadoslist.Search(id);
                 if (empleadosSearch != null)
                 {
 
                     empleadoslist.Delet(id);
-                    jsontxt3 = JsonConvert.SerializeObject(empleadosList, Formatting.Indented);
+                    jsontxt3 = JsonConvert.SerializeObject(empleadoslist, Formatting.Indented);
                     File.WriteAllText(FILENAME3, jsontxt3);
                     WriteLine("El Empleado ha sido Borrado Exitosamente");
 
@@ -704,18 +733,18 @@ namespace PI_2022_I_L2_GRUPO3
         }
         public void BuscarEmpleado()
         {
-            Empleados_List empleadosList = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+            empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
             try
             {
                 bool Found = false;
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var empleadosSearch = empleadosList.Search(id);//!= null ? .Search(id) : null;
+                var empleadosSearch = empleadoslist.Search(id);//!= null ? .Search(id) : null;
                 if (empleadosSearch == null)
                 {
 
                     WriteLine("Empleado Existentes");
-                    foreach (var empleados in empleadosList.empleadosList)
+                    foreach (var empleados in empleadoslist.empleadosList)
                     {
                         if (empleados.Id == id)
                         {
@@ -758,11 +787,11 @@ namespace PI_2022_I_L2_GRUPO3
 
             try
             {
-                Empleados_List empleadosList = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
-                if (empleadosList != null)
+                empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+                if (empleadoslist != null)
                 {
                     WriteLine("Lista de Empleados");
-                    foreach (var empleado in empleadosList.empleadosList)
+                    foreach (var empleado in empleadoslist.empleadosList)
                     {
                         WriteLine($"Nombre del Empleado es:\n {empleado.Nombre} {empleado.Apellido}");
                         WriteLine($"Id del Empleado es:\n {empleado.Id}");
@@ -788,12 +817,12 @@ namespace PI_2022_I_L2_GRUPO3
         }
         public void ActualizarEmpleados()
         {
-            Empleados_List empleadosList = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
+            empleadoslist = JsonConvert.DeserializeObject<Empleados_List>(jsontxt3);
             try
             {
                 WriteLine("Ingrese el Id: ");
                 var id = ReadLine();
-                var empleadosSearch = empleadosList.Search(id);
+                var empleadosSearch = empleadoslist.Search(id);
                 if (empleadosSearch != null)
                 {
                     empleadosSearch.Id = id;
@@ -809,8 +838,8 @@ namespace PI_2022_I_L2_GRUPO3
                     empleadosSearch.Email = ReadLine();
                     WriteLine($"El Salario Mensual del empleado es:");
                     empleadosSearch.SalarioMensual = decimal.Parse(ReadLine());
-                    empleadosList.Update(empleadosSearch);
-                    jsontxt3 = JsonConvert.SerializeObject(empleadosList, Formatting.Indented);
+                    empleadoslist.Update(empleadosSearch);
+                    jsontxt3 = JsonConvert.SerializeObject(empleadoslist, Formatting.Indented);
                     File.WriteAllText(FILENAME3, jsontxt3);
                     WriteLine("Actualizado Exitosamente");
                 }

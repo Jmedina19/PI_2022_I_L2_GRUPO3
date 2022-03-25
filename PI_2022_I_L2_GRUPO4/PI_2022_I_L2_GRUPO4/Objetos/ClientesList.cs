@@ -15,11 +15,6 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
     {
         const string FILENAME = @"C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\ClientesList.json";
 
-        // static ClientesList clientesList = new ClientesList();
-        static string jsontxt1 = "";
-        string Nombre, Apellido, Id, Email,
-        NumeroTelefono;
-
         public List<Clientes> clientesList { get; set; }
 
         public ClientesList()

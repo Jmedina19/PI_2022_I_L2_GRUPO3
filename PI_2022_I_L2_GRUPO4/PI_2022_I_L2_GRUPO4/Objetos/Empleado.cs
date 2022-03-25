@@ -10,11 +10,7 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
     
     internal class Empleado:Ca_Datos_Generales
     {
-        private decimal salariomensual;
-
-        public Empleado(string pNombre, string pApellido, string pId, string pEmail, string pNumeroTelefono) : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
-        {
-        }
+        protected decimal salariomensual;
 
         public Empleado(string pNombre, string pApellido, string pId, string pEmail,
             string pNumeroTelefono, decimal pSalarioMensual)
@@ -38,6 +34,7 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
 
         public override string ToString() =>
            $"Datos del Empleado que lo atendera :\n" +
-           $"\n{base.ToString()}";
+           $"{base.ToString()}" +
+            $"El salario menusla es: {SalarioMensual}";
     }
 }

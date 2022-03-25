@@ -17,13 +17,9 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
             
         }
 
+	
         public override string ToString() =>
            $"Datos del Cliente:\n" +
            $"\n{base.ToString()}";
-
-      // public static implicit operator string(Clientes v)
-        //{
-        //    throw new NotImplementedException();
-       // }
     }
 }

@@ -8,11 +8,6 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
 {
     internal abstract class Ca_Datos_Generales
     {
-       // public string pNombre;
-       // public string pId;
-       // public string pEmail;
-       // public string pNumeroTelefono;
-
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Id { get; set; }

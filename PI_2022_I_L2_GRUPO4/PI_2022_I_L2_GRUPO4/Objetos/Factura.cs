@@ -17,8 +17,8 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
             string pCodigoGame, decimal pISV, decimal pDescuento, int pCantidadGame) 
             : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono, pDescripcionGame, pCodigoGame, pNombreGame, pPriceGame)
         {
-            ISV = pISV;
-            Descuento = pDescuento;
+            ISV          = pISV;
+            Descuento    = pDescuento;
             CantidadGame = pCantidadGame;
         }
 
@@ -67,6 +67,7 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
         public virtual decimal CalcularDescuento() => Descuento * CalcularSubtotal();
         public virtual decimal CalcularISV() => CalcularSubtotal() * ISV;
         public virtual decimal CalcularTotal() => (CalcularSubtotal() + CalcularISV()) - CalcularDescuento();
+        
 
         public override string ToString() =>
            $"{base.ToString()}\n" +

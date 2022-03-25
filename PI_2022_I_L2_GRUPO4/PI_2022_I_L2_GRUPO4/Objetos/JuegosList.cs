@@ -14,32 +14,25 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
 
     internal class JuegosList
     {
-       // const string FILENAME2 = @"C:\Users\Bessy Almendares\Desktop\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\PI_2022_I_L2_GRUPO4\bin\Debug\JuegosList.json";
-       // static JuegosList juegosList = new JuegosList();
-       // static string jsontxt2 = "";
-       // string Nombre, Apellido, Id, Email,
-       //         NumeroTelefono,NombreGame, DescripcionGame,
-       //         CodigoGame;
-       // decimal PriceGame;
 
-        public List<Juegos> Juegoslist { get; set; }
+        public List<Juegos> juegoslist { get; set; }
 
         public JuegosList()
         {
-            Juegoslist = new List<Juegos>();
+            juegoslist = new List<Juegos>();
         }
 
         public void Add(Juegos pJuegos)
         {
-            Juegoslist.Add(pJuegos);  
+            juegoslist.Add(pJuegos);  
         }
         public Juegos Search(string pCodigoGame)
         {
-            if (Juegoslist == null)
+            if (juegoslist == null)
             {
                 return null;
             }
-            foreach (var juegos in Juegoslist)
+            foreach (var juegos in juegoslist)
             {
                 if (juegos.CodigoGame == pCodigoGame)
                 {
@@ -50,22 +43,22 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
         }
         public void Delet(string pCodigoGame)
         {
-            foreach (var juegos in Juegoslist)
+            foreach (var juegos in juegoslist)
             {
                 if (juegos.CodigoGame == pCodigoGame)
                 {
-                    Juegoslist.Remove(juegos);
+                    juegoslist.Remove(juegos);
                 }
             }
             
         }
         public Juegos Update(Juegos pJuegos)
         {
-            if (Juegoslist == null)
+            if (juegoslist == null)
             {
                 return null;
             }
-            foreach (var juegos in Juegoslist)
+            foreach (var juegos in juegoslist)
             {
                 if (juegos.Id == pJuegos.Id)
                 {
