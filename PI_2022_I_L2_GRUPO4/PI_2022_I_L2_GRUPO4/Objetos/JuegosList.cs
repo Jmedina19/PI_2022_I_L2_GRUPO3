@@ -59,6 +59,31 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
             }
             
         }
+        public Juegos Update(Juegos pJuegos)
+        {
+            if (Juegoslist == null)
+            {
+                return null;
+            }
+            foreach (var juegos in Juegoslist)
+            {
+                if (juegos.Id == pJuegos.Id)
+                {
+                    juegos.NombreGame      = pJuegos.NombreGame;
+                    juegos.DescripcionGame = pJuegos.DescripcionGame;
+                    juegos.CodigoGame      = pJuegos.CodigoGame;
+                    juegos.PriceGame       = pJuegos.PriceGame;
+                    juegos.NumeroTelefono  = pJuegos.NumeroTelefono;
+                    juegos.Nombre          = pJuegos.Nombre;
+                    juegos.Apellido        = pJuegos.Apellido;
+                    juegos.Id              = pJuegos.Id;
+                    juegos.Email           = pJuegos.Email;
+                    juegos.NumeroTelefono  = pJuegos.NumeroTelefono;
+                    return juegos;
+                }
+            }
+            return null;
+        }
         /* public void AgregarJuegos()
          {
              var juegosnew = new Juegos(Nombre, Apellido, Id, Email, NumeroTelefono, NombreGame, DescripcionGame, 
@@ -149,17 +174,17 @@ namespace PI_2022_I_L2_GRUPO4.Objetos
                  {
 
                      WriteLine("Clientes Existentes");
-                     foreach (var cliente in juegosList.juegoslist)
+                     foreach (var juegos in juegosList.juegoslist)
                      {
-                         if (cliente.Id == id)
+                         if (juegos.Id == id)
                          {
-
+                            WriteLine($"Nombre del Juegos:\n {Nombre} {Apellido}");
+                            WriteLine($"Id del Juegos:\n {Id}");
+                            WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
+                            WriteLine($"Email del client:\n {Email}");
+                            WriteLine("");
                          }
-                         WriteLine($"Nombre del cliente:\n {Nombre} {Apellido}");
-                         WriteLine($"Id del cliente:\n {Id}");
-                         WriteLine($"Numero Telefonico del cliente:\n {NumeroTelefono}");
-                         WriteLine($"Email del client:\n {Email}");
-                         WriteLine("");
+                         
                      }
                      if (Found)
                      {

@@ -1,6 +1,6 @@
 {
   "Juegoslist": [
-   {
+    {
       "Nombre":"Steve",
       "Apellido":"Fudoka",
       "Id":"0801-2003-07945",
@@ -33,5 +33,5 @@
          "CodigoGame":"3",
          "PriceGame":45.99
         }
-       ]
+     ]
 }

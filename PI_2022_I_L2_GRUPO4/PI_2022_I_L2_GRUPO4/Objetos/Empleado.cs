@@ -7,14 +7,33 @@ using System.Threading.Tasks;
 
 namespace PI_2022_I_L2_GRUPO3.Objetos
 {
+    
     internal class Empleado:Ca_Datos_Generales
     {
+        private decimal salariomensual;
+
+        public Empleado(string pNombre, string pApellido, string pId, string pEmail, string pNumeroTelefono) : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
+        {
+        }
 
         public Empleado(string pNombre, string pApellido, string pId, string pEmail,
-            string pNumeroTelefono)
+            string pNumeroTelefono, decimal pSalarioMensual)
             : base(pNombre, pApellido, pId, pEmail, pNumeroTelefono)
         {
-
+            salariomensual = pSalarioMensual;
+        }
+        public decimal SalarioMensual
+        {
+            get { return salariomensual; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value),
+                        value, $"{nameof(SalarioMensual)} deberia ser >=0 ");
+                }
+                salariomensual = value;
+            }
         }
 
         public override string ToString() =>
