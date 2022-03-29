@@ -57,7 +57,7 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value),
-                        value, $"{nameof(CantidadGame)} deberia ser > 0 ");
+                        value, $"{nameof(CantidadGame)} debe ser > 0 ");
                 }
                 cantidadgame = value;
             }

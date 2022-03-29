@@ -10,9 +10,14 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
     internal class Juegos:Ca_Datos_Generales
     {
 
-        public string NombreGame { get; set; }
-        public string DescripcionGame { get; set; }
-        public string CodigoGame { get; set; }
+        //public string NombreGame { get; set; }
+        //public string DescripcionGame { get; set; }
+        //public string CodigoGame { get; set; }
+        private string nombregame;
+        private string descripciongame;
+        private string codigogame;
+
+
         protected decimal pricegame;
 
 
@@ -24,6 +29,50 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
             PriceGame       = pPriceGame;
             NombreGame      = pNombreGame;
             CodigoGame      = pCodigoGame;
+        }
+
+        public string NombreGame
+        {
+            get { return nombregame; }
+            set 
+            {
+                if (value == "")
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value),
+                        value, $"{nameof(NombreGame)} debe colocar el dato solicitado");
+
+                }
+                nombregame = value;
+            }
+        }
+        public string DescripcionGame
+        {
+            get { return descripciongame; }
+            set
+            {
+
+                if (value == "")
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value),
+                        value, $"{nameof(DescripcionGame)} debe colocar el dato solicitado");
+
+                }
+                descripciongame = value; 
+            }
+        }
+        public string CodigoGame
+        {
+            get { return codigogame; }
+            set 
+            {
+                if (value == "")
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value),
+                        value, $"{nameof(CodigoGame)} debe colocar el dato solicitado");
+
+                }
+                codigogame = value; 
+            }
         }
 
         public decimal PriceGame
@@ -42,9 +91,6 @@ namespace PI_2022_I_L2_GRUPO3.Objetos
 
 
         public virtual decimal CalcularSubtotal() => PriceGame ;
-
-
-
         public override string ToString() =>
             
             $"El Nombre del juego es:\n {NombreGame}\n" +

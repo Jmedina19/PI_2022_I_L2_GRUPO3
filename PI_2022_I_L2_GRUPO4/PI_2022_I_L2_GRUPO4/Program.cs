@@ -230,7 +230,7 @@ namespace PI_2022_I_L2_GRUPO3
                         break;
                         
                     case "6":
-                        //menu1 = false;
+                       
                         WriteLine("Muchas gracias y adios");
                         seguir = 'N';
                         Clear();
